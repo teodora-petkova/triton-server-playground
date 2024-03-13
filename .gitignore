@@ -1,0 +1,20 @@
+__pycache__
+
+# models
+*.pt
+*.onnx
+*.plan
+*.bin
+
+# images
+*.jpg
+*.jpeg
+*.png
+*.webp
+
+logs.txt
+sftp.json
+
+# configs for stable diffusion
+stable-diffusion-triton-server/model_repository/pipeline/1/CompVis/*
+stable-diffusion-triton-server/model_repository/pipeline/1/openai/*

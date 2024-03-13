@@ -1,0 +1,33 @@
+version: '1'
+
+services:
+  triton:
+    build: .
+    image: dev.bg-detection-triton
+    container_name: dev.bg-detection-triton
+    volumes:
+      - ./model_repository:/models
+    shm_size: 256m
+    ports:
+      - 127.0.0.1:18000:8000
+      - 127.0.0.1:18001:8001
+      - 127.0.0.1:18002:8002
+    command: >
+      
+      tritonserver --model-repository=/models
+      --log-verbose=3
+      --log-info=1
+      --log-warning=1
+      --log-error=1
+      
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    
+    restart: always
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [ gpu ]
+              device_ids: [ '2' ]
