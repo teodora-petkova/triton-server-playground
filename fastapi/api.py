@@ -193,7 +193,7 @@ async def detections(
     image_filepath = f'{str(Path(tempdir) / get_unique_filename())}{extension}'
     img_to_show.save(image_filepath)
 
-    return FileResponse(image_filepath)
+    return FileResponse(image_filepath, media_type="image/jpeg")
 
 
 if __name__ == '__main__':

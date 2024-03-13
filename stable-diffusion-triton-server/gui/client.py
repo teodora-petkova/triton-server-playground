@@ -39,7 +39,7 @@ def generate(prompt, negative_prompt):
         outputs=[output_img]
     )
     resp_img = response.as_numpy("generated_image")
-    print(resp_img.shape)
+    #print(resp_img.shape)
     im = Image.fromarray(np.squeeze(resp_img.astype(np.uint8)))
     return im
 
